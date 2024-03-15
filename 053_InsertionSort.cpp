@@ -1,20 +1,63 @@
-// 053_InsertionSort.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <iostream>
+using namespace std;
+
+int fs[11];
+int n;
+
+void input() {
+	while (true) {
+		cout << "memasukkan banyaknya elemen pada array : ";
+		cin >> n;
+		if (n <= 12)
+			break;
+		else {
+			cout << "\narray dapat mempunyai maksimal 20 elemen.\n";
+		}
+	}
+	cout << endl;
+	cout << "=====================" << endl;
+	cout << "masukan elemen array" << endl;
+	cout << "=====================" << endl;
+
+	for (int i = 0; i < n; i++) {
+		cout << "Data ke-" << (i + 1) << ";";
+		cin >> fs[i];
+	}
+}
+
+void insertionSort() {
+	int i, temp, j;
+
+	for (i = 1; i <= n - 1; i++) //step 1
+	{
+		temp = fs[i]; //step 2
+		j = i - 1;  //step 3
+		while (j >= 0 && fs[j] > temp) //step 4
+		{
+			fs[j + 1] = fs[j];    //step4a
+			j = j - 1;              //step4b
+		}
+		fs[j + 1] = temp;  //step5
+
+	}
+}
+
+void display() {
+	cout << endl;
+	cout << "==================================" << endl;
+	cout << "element array yang telah tersusun" << endl;
+	cout << "==================================" << endl;
+	for (int j = 0; j < n; j++) {
+		cout << fs[j] << endl;
+	}
+	cout << "jumlah pass = " << n - 1 << endl;
+	cout << endl;
+}
 
 int main()
 {
-    std::cout << "Hello World!\n";
+	input();
+	insertionSort();
+	display();
+
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
